@@ -1,0 +1,7 @@
+---
+- name: permission_acess
+  file:
+    path: /home/user/reading-XML/
+    state: directory
+    mode: '777' 
+...

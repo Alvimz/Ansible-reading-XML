@@ -1,0 +1,13 @@
+---
+- name: Instala dependencias de pacotes
+  ansible.builtin.package:
+    name: "{{ pacotes }}"
+    state: present
+
+- name: Instala Pacotes Python
+  pip:
+    name: "{{ packages_python }}"
+    extra_args: "--break-system-packages"
+    state: present
+
+...

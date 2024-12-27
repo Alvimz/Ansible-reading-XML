@@ -1,0 +1,8 @@
+---
+- name: Executando Script Python Máquina target!
+  become: yes
+  hosts: all
+  roles:
+    - python
+
+...

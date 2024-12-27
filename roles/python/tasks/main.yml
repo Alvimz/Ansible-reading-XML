@@ -1,0 +1,34 @@
+---
+- name: Install Dependences
+  include_tasks: install.yml
+
+- name: Create folder
+  ansible.builtin.file:
+    path: /home/user/reading-XML
+    state: directory
+    mode: '0755'
+
+- name: Download git repository
+  git:
+    repo: https://github.com/Alvimz/reading-XML.git
+    dest: /home/user/reading-XML
+    single_branch: yes
+    version: rene
+    depth: 1
+    force: yes
+  notify: permission_acess
+
+- name: Execute Python Script on targets
+  ansible.builtin.command:
+    cmd: python3 /home/user/reading-XML/bootstrap.py
+    chdir: /home/user/reading-XML
+
+- name: Read the last line
+  ansible.builtin.shell: "tail -n 1 /home/user/reading-XML/log_temporary.txt"
+  register: last_line
+
+- name: Show it!
+  ansible.builtin.debug:
+    msg: "Essa tarefa demorou: {{ last_line.stdout }}"
+
+...

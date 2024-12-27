@@ -1,0 +1,15 @@
+---
+packages_python:
+  - lxml
+  - requests
+  - openpyxl
+  - apscheduler
+  - validators
+  - keyboard
+
+pacotes:
+  - unzip
+  - python3-pip
+  - git
+...
+# vars file for script_python_ansible
